@@ -597,6 +597,45 @@ class GeneratedApiClient {
 
   /**
    *
+   * @param sessionId {String}
+   * @description
+   * Convenience method for /api/v1/sessions/{sessionId}
+   */
+  clearSession(sessionId) {
+    let url = `${this.baseUrl}/api/v1/sessions/${sessionId}`;
+
+    const request = this.http.delete(url);
+    return request;
+  }
+
+  /**
+   *
+   * @param sessionId {String}
+   * @description
+   * Get session information for the current user. Use this method in a browser based application to determine if the user is logged in.
+   */
+  getSession(sessionId) {
+    let url = `${this.baseUrl}/api/v1/sessions/${sessionId}`;
+
+    const request = this.http.getJson(url);
+    return request.then(jsonRes => new models.Session(jsonRes, this));
+  }
+
+  /**
+   *
+   * @param sessionId {String}
+   * @description
+   * Convenience method for /api/v1/sessions/{sessionId}/lifecycle/refresh
+   */
+  refreshSession(sessionId) {
+    let url = `${this.baseUrl}/api/v1/sessions/${sessionId}/lifecycle/refresh`;
+
+    const request = this.http.postJson(url);
+    return request.then(jsonRes => new models.Session(jsonRes, this));
+  }
+
+  /**
+   *
    * @param {Object} queryParams Map of query parameters to add to this request
    * @param {String} [queryParams.q]
    * @param {String} [queryParams.after]
@@ -1106,6 +1145,19 @@ class GeneratedApiClient {
     let url = `${this.baseUrl}/api/v1/users/${userId}/roles/${roleId}/targets/groups/${groupId}`;
 
     const request = this.http.put(url);
+    return request;
+  }
+
+  /**
+   *
+   * @param userId {String}
+   * @description
+   * Removes all active identity provider sessions. This forces the user to authenticate on the next operation. Optionally revokes OpenID Connect and OAuth refresh and access tokens issued to the user.
+   */
+  clearUserSessions(userId) {
+    let url = `${this.baseUrl}/api/v1/users/${userId}/sessions`;
+
+    const request = this.http.delete(url);
     return request;
   }
 
