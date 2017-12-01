@@ -13,7 +13,7 @@ Need help? Contact [developers@okta.com](mailto:developers@okta.com) or use the 
 ## Installation
 
 ```sh
-npm install @okta/okta-sdk-nodejs
+npm install riffyn:okta-sdk-nodejs
 ```
 
 ## Usage
